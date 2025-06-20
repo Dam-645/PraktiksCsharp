@@ -1,0 +1,7 @@
+C:\Users\admin\source\repos\Praktika16\Praktika16\obj\Debug\Praktika16.csproj.AssemblyReference.cache
+C:\Users\admin\source\repos\Praktika16\Praktika16\obj\Debug\Praktika16.csproj.CoreCompileInputs.cache
+C:\Users\admin\source\repos\Praktika16\Praktika16\bin\Debug\Praktika16.exe.config
+C:\Users\admin\source\repos\Praktika16\Praktika16\bin\Debug\Praktika16.exe
+C:\Users\admin\source\repos\Praktika16\Praktika16\bin\Debug\Praktika16.pdb
+C:\Users\admin\source\repos\Praktika16\Praktika16\obj\Debug\Praktika16.exe
+C:\Users\admin\source\repos\Praktika16\Praktika16\obj\Debug\Praktika16.pdb
