@@ -1,0 +1,7 @@
+C:\Users\WS\source\repos\Praktika9\bin\Debug\Praktika9.exe.config
+C:\Users\WS\source\repos\Praktika9\bin\Debug\Praktika9.exe
+C:\Users\WS\source\repos\Praktika9\bin\Debug\Praktika9.pdb
+C:\Users\WS\source\repos\Praktika9\obj\Debug\Praktika9.csproj.AssemblyReference.cache
+C:\Users\WS\source\repos\Praktika9\obj\Debug\Praktika9.csproj.CoreCompileInputs.cache
+C:\Users\WS\source\repos\Praktika9\obj\Debug\Praktika9.exe
+C:\Users\WS\source\repos\Praktika9\obj\Debug\Praktika9.pdb
