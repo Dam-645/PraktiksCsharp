@@ -169,7 +169,7 @@ class Program
         Console.WriteLine("Введите слово для поиска:");
         string word = Console.ReadLine();
 
-        string pattern = $@"\b{Regex.Escape(word)}\b"; // \b - граница слова
+        string pattern = $@"\b{Regex.Escape(word)}\b"; 
         MatchCollection matches = Regex.Matches(text, pattern, RegexOptions.IgnoreCase);
 
         Console.WriteLine($"Слово '{word}' встречается {matches.Count} раз(а)");
