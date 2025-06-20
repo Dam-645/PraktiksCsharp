@@ -3,7 +3,7 @@
 
 namespace UnifiedApp
     {
-        // Класс "Студент"
+        
         public class Student
         {
             public string LastName { get; set; }
