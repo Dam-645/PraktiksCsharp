@@ -10,7 +10,7 @@ class Rectangle
     private double x1, y1;
     private double x2, y2;
 
-    // Конструктор по умолчанию
+  
     public Rectangle()
     {
         x1 = 0;
@@ -19,7 +19,7 @@ class Rectangle
         y2 = 0;
     }
 
-    // Конструктор, принимающий координаты
+    
     public Rectangle(double x1, double y1, double x2, double y2)
     {
         // Убеждаемся, что x1,y1 - верхний левый угол, а x2,y2 - нижний правый
@@ -29,7 +29,7 @@ class Rectangle
         this.y2 = Math.Min(y1, y2);
     }
 
-    // Вычисление периметра
+    
     public double CalculatePerimeter()
     {
         double width = x2 - x1;
@@ -37,7 +37,7 @@ class Rectangle
         return 2 * (width + height);
     }
 
-    // Вычисление площади
+    
     public double CalculateArea()
     {
         double width = x2 - x1;
@@ -45,7 +45,7 @@ class Rectangle
         return width * height;
     }
 
-    // Метод для вывода информации о прямоугольнике
+    
     public void PrintInfo(string label)
     {
         Console.WriteLine($"{label}:");
@@ -60,11 +60,11 @@ class Program
 {
     static void Main()
     {
-        Rectangle userRectangle = null; // Инициализируем null, чтобы было возможно обратиться к нему позже.
-        Rectangle defaultRectangle = new Rectangle(); // Создаем прямоугольник по умолчанию
+        Rectangle userRectangle = null; 
+        Rectangle defaultRectangle = new Rectangle(); 
 
         // Получаем координаты пользовательского прямоугольника
-        while (userRectangle == null) // Повторяем, пока не получим корректные координаты.
+        while (userRectangle == null) 
         {
             try
             {
@@ -81,11 +81,11 @@ class Program
                 double x2 = double.Parse(coords2[0]);
                 double y2 = double.Parse(coords2[1]);
 
-                userRectangle = new Rectangle(x1, y1, x2, y2); // Пытаемся создать прямоугольник. Если координаты некорректные, будет выброшено исключение.
+                userRectangle = new Rectangle(x1, y1, x2, y2); 
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Ошибка ввода: {ex.Message}"); // Обрабатываем все ошибки, возникшие при парсинге и создании прямоугольника.
+                Console.WriteLine($"Ошибка ввода: {ex.Message}"); 
             }
         }
 
@@ -94,6 +94,6 @@ class Program
         userRectangle.PrintInfo("Пользовательский прямоугольник");
         defaultRectangle.PrintInfo("Прямоугольник по умолчанию");
 
-        Console.ReadKey(); // Ожидаем нажатия клавиши перед закрытием консоли.
+        Console.ReadKey(); 
     }
 }
