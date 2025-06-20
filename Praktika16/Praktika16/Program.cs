@@ -55,7 +55,7 @@ namespace PatternMatchingExamples
             Console.WriteLine(GetQuadrantInfo((3, 4)));
             Console.WriteLine(GetQuadrantInfo((-2, -5)));
             Console.WriteLine(GetQuadrantInfo((-1, 2)));
-            Console.WriteLine(GetQuadrantInfo((0, 0))); // Добавлено для проверки (0, 0)
+            Console.WriteLine(GetQuadrantInfo((0, 0))); 
 
             Console.WriteLine("\n5. Позиционный паттерн:");
             Console.WriteLine(GetPointPosition(new Point(0, 0)));
