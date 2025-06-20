@@ -115,33 +115,33 @@ class Program
         Console.WriteLine("Работа с массивом целых чисел");
         Console.WriteLine("-----------------------------");
 
-        // Создаем и заполняем массив
+       
         IntArrayHandler arrayHandler = new IntArrayHandler(5);
         arrayHandler.InputElements();
 
-        // Выводим исходный массив
+       
         Console.WriteLine("\nИсходный массив:");
         arrayHandler.PrintElements();
 
-        // Проверяем, не отсортирован ли массив
+      
         Console.WriteLine($"Массив не отсортирован: {!arrayHandler}");
 
-        // Сортируем массив
+        
         arrayHandler.SortArray();
         Console.WriteLine("\nПосле сортировки:");
         arrayHandler.PrintElements();
 
-        // Увеличиваем все элементы на 1
+       
         arrayHandler++;
         Console.WriteLine("\nПосле увеличения всех элементов на 1:");
         arrayHandler.PrintElements();
 
-        // Умножаем все элементы на 2
+        
         arrayHandler.Scalar = 2;
         Console.WriteLine("\nПосле умножения всех элементов на 2:");
         arrayHandler.PrintElements();
 
-        // Преобразуем в обычный массив и выводим
+        
         int[] simpleArray = arrayHandler;
         Console.WriteLine("\nПреобразованный в int[] массив:");
         Console.WriteLine(string.Join(", ", simpleArray));
