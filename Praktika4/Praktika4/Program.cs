@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,27 +17,29 @@ namespace UnifiedApp
                 Console.WriteLine("=== Главное меню ===");
                 Console.WriteLine("1) Игра Blackjack");
                 Console.WriteLine("2) Справочник Person (Student / Employee)");
-                Console.WriteLine("3) Выход");
+                Console.WriteLine("3) ToDo List");
+                Console.WriteLine("4) Выход");
                 Console.Write("Выберите номер задачи: ");
 
                 string input = Console.ReadLine();
-                if (input == "1")
+                switch (input)
                 {
-                    Blackjack.Run();
-                }
-                else if (input == "2")
-                {
-                    Directory.Run();
-                }
-                else if (input == "3")
-                {
-                    Console.WriteLine("Завершение программы.");
-                    break;
-                }
-                else
-                {
-                    Console.WriteLine("Неверный выбор. Нажмите Enter и попробуйте снова.");
-                    Console.ReadLine();
+                    case "1":
+                        Blackjack.Run();
+                        break;
+                    case "2":
+                        Directory.Run();
+                        break;
+                    case "3":
+                        ToDoList.Run();
+                        break;
+                    case "4":
+                        Console.WriteLine("Завершение программы.");
+                        return;
+                    default:
+                        Console.WriteLine("Неверный выбор. Нажмите Enter и попробуйте снова.");
+                        Console.ReadLine();
+                        break;
                 }
 
                 Console.WriteLine("\nНажмите Enter для возврата в меню...");
@@ -117,7 +119,7 @@ namespace UnifiedApp
         }
     }
 
-    // === Модуль Directory (Person) ===
+    // === Модуль Directory ===
     static class Directory
     {
         public static void Run()
@@ -126,13 +128,14 @@ namespace UnifiedApp
             Console.WriteLine("=== Справочник Person ===");
 
             Person student = new Student("Алексей", 21, "МГУ", "Программная инженерия");
-            Person employee = new Employee("Мария", 30, "Яндекс", "Аналитик данных");
+
+
+Person employee = new Employee("Мария", 30, "Яндекс", "Аналитик данных");
 
             Console.WriteLine(student.GetInfo());
             Console.WriteLine();
             Console.WriteLine(employee.GetInfo());
-
-}
+        }
     }
 
     abstract class Person
@@ -184,5 +187,164 @@ namespace UnifiedApp
             return $"[Сотрудник]\nИмя: {Name}\nВозраст: {Age}\nКомпания: {Company}\nДолжность: {Position}";
         }
     }
-}
 
+    // === Модуль ToDoList ===
+    enum TaskStatus { New, InProgress, Completed }
+
+    class TaskItem
+    {
+        public int Id { get; set; }
+        public string Title { get; set; }
+        public DateTime DueDate { get; set; }
+        public TaskStatus Status { get; set; }
+
+        public TaskItem(int id, string title, DateTime dueDate)
+        {
+            Id = id;
+            Title = title;
+            DueDate = dueDate;
+            Status = TaskStatus.New;
+        }
+
+        public void Display()
+        {
+            Console.WriteLine($"{Id}) {Title} — до {DueDate.ToShortDateString()} — статус: {Status}");
+        }
+    }
+
+    static class ToDoList
+    {
+        private static List<TaskItem> tasks = new List<TaskItem>();
+        private static int nextId = 1;
+        private const int MaxTasks = 100;
+
+        public static void Run()
+        {
+            while (true)
+            {
+                Console.Clear();
+                Console.WriteLine("=== ToDo List Меню ===");
+                Console.WriteLine("1) Показать задачи");
+                Console.WriteLine("2) Добавить задачу");
+                Console.WriteLine("3) Редактировать задачу");
+                Console.WriteLine("4) Удалить задачу");
+                Console.WriteLine("0) Назад в меню");
+                Console.Write("Ваш выбор: ");
+
+                string input = Console.ReadLine();
+                switch (input)
+                {
+                    case "1":
+                        ShowAll();
+                        break;
+                    case "2":
+                        AddTask();
+                        break;
+                    case "3":
+                        EditTask();
+                        break;
+                    case "4":
+                        DeleteTask();
+                        break;
+                    case "0":
+                        return;
+                    default:
+                        Console.WriteLine("Неверный ввод.");
+                        break;
+                }
+
+                Console.WriteLine("\nНажмите Enter для продолжения...");
+                Console.ReadLine();
+            }
+        }
+
+        static void ShowAll()
+        {
+            Console.WriteLine("\n=== Список задач ===");
+            if (tasks.Count == 0)
+            {
+                Console.WriteLine("Пусто.");
+                return;
+            }
+            foreach (var task in tasks)
+                task.Display();
+        }
+
+        static void AddTask()
+        {
+            if (tasks.Count >= MaxTasks)
+            {
+
+Console.WriteLine("Достигнут лимит задач.");
+                return;
+            }
+
+            Console.Write("Введите название задачи: ");
+            string title = Console.ReadLine();
+
+            Console.Write("Введите дату (гггг-мм-дд): ");
+            if (!DateTime.TryParse(Console.ReadLine(), out DateTime dueDate))
+            {
+                Console.WriteLine("Неверный формат даты.");
+                return;
+            }
+
+            tasks.Add(new TaskItem(nextId++, title, dueDate));
+            Console.WriteLine("Задача добавлена.");
+        }
+
+        static void EditTask()
+        {
+            Console.Write("ID задачи для редактирования: ");
+            if (!int.TryParse(Console.ReadLine(), out int id))
+            {
+                Console.WriteLine("Неверный ID.");
+                return;
+            }
+
+            var task = tasks.Find(t => t.Id == id);
+            if (task == null)
+            {
+                Console.WriteLine("Не найдено.");
+                return;
+            }
+
+            Console.Write("Новое название (пусто — без изменений): ");
+            string newTitle = Console.ReadLine();
+            if (!string.IsNullOrWhiteSpace(newTitle))
+                task.Title = newTitle;
+
+            Console.Write("Новая дата (пусто — без изменений): ");
+            string dateInput = Console.ReadLine();
+            if (!string.IsNullOrWhiteSpace(dateInput) && DateTime.TryParse(dateInput, out DateTime newDate))
+                task.DueDate = newDate;
+
+            Console.WriteLine("Выберите статус: 0-New, 1-InProgress, 2-Completed");
+            if (Enum.TryParse(Console.ReadLine(), out TaskStatus newStatus))
+                task.Status = newStatus;
+
+            Console.WriteLine("Обновлено.");
+        }
+
+        static void DeleteTask()
+        {
+            Console.Write("ID задачи для удаления: ");
+            if (!int.TryParse(Console.ReadLine(), out int id))
+            {
+                Console.WriteLine("Неверный ID.");
+                return;
+            }
+
+            var task = tasks.Find(t => t.Id == id);
+            if (task != null)
+            {
+                tasks.Remove(task);
+                Console.WriteLine("Удалено.");
+            }
+            else
+            {
+                Console.WriteLine("Не найдено.");
+            }
+        }
+    }
+}
