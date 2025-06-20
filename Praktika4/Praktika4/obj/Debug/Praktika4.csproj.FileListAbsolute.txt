@@ -1,0 +1,7 @@
+C:\Users\admin\source\repos\Praktika4\Praktika4\bin\Debug\Praktika4.exe.config
+C:\Users\admin\source\repos\Praktika4\Praktika4\bin\Debug\Praktika4.exe
+C:\Users\admin\source\repos\Praktika4\Praktika4\bin\Debug\Praktika4.pdb
+C:\Users\admin\source\repos\Praktika4\Praktika4\obj\Debug\Praktika4.csproj.AssemblyReference.cache
+C:\Users\admin\source\repos\Praktika4\Praktika4\obj\Debug\Praktika4.csproj.CoreCompileInputs.cache
+C:\Users\admin\source\repos\Praktika4\Praktika4\obj\Debug\Praktika4.exe
+C:\Users\admin\source\repos\Praktika4\Praktika4\obj\Debug\Praktika4.pdb
